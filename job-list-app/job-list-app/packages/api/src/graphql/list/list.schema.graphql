@@ -1,0 +1,18 @@
+type List {
+  id: ID!
+  title: String!
+  jobs: [Job!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  lists: [List!]!
+  list(id: ID!): List
+}
+
+type Mutation {
+  createList(title: String!): List!
+  publishList(id: ID!): List!
+  addJobToList(listId: ID!, jobId: ID!): List!
+}

@@ -1,0 +1,16 @@
+type Job {
+  id: ID!
+  title: String!
+  description: String
+  company: String!
+  location: String
+  createdAt: String!
+}
+
+type Query {
+  listJobs: [Job!]!
+}
+
+type Mutation {
+  addJobToList(jobId: ID!, listId: ID!): Job!
+}

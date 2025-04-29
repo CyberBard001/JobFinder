@@ -1,0 +1,14 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+
+const apiProxy = createProxyMiddleware({
+  target: 'http://localhost:4000', // Replace with your GraphQL API URL
+  changeOrigin: true,
+  pathRewrite: {
+    '^/api/graphql': '/graphql', // Rewrite path for the GraphQL endpoint
+  },
+});
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  return apiProxy(req, res);
+}
